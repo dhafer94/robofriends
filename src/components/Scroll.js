@@ -4,9 +4,9 @@ const Scroll = (props) => {
 	return (
 		<div
 			style={{
-				msOverflowY: 'scroll',
+				overflowY: 'scroll',
 				border: '5px solid black',
-				height: '100%',
+				height: '800px',
 			}}>
 			{props.children}
 		</div>

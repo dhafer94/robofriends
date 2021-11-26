@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import CardList from './CardList';
+import CardList from '../components/CardList';
 // import { robots } from './robots';
-import SearchBox from './SearchBox';
+import SearchBox from '../components/SearchBox';
 import './App.css';
-import Scroll from './Scroll';
+import Scroll from '../components/Scroll';
 
 class App extends Component {
 	constructor() {
@@ -12,7 +12,7 @@ class App extends Component {
 			robots: [],
 			searchfield: '',
 		};
-		console.log('constructor');
+		// console.log('constructor');
 	}
 
 	componentDidMount() {
@@ -24,7 +24,7 @@ class App extends Component {
 				this.setState({ robots: users });
 			});
 		// this.setState({ robots: robots });
-		console.log('componentDidMount');
+		// console.log('componentDidMount');
 	}
 
 	onSearchChange = (evt) => {
@@ -34,16 +34,15 @@ class App extends Component {
 	};
 
 	render() {
-		const filteredRobot = this.state.robots.filter((robots) => {
+		const { robots, searchfield } = this.state
+		const filteredRobot = robots.filter((robots) => {
 			return robots.name
 				.toLowerCase()
-				.includes(this.state.searchfield.toLowerCase());
+				.includes(searchfield.toLowerCase());
 		});
-		console.log('render');
-		if (this.state.robots.length === 0) {
-			return <h1>Loading</h1>;
-		} else {
-			return (
+		// console.log('render');
+		return !robots.length ? <h1>Loading</h1> :
+			(
 				<div className='tc'>
 					<h1 className='f1'>RoboFriends</h1>
 					<SearchBox searchChange={this.onSearchChange} />
@@ -52,7 +51,7 @@ class App extends Component {
 					</Scroll>
 				</div>
 			);
-		}
+
 	}
 }
 
