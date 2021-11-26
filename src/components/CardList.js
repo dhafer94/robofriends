@@ -3,7 +3,6 @@ import Card from './Card'
 
 
 const CardList = ({ searchfield, robots }) => {
-
     return (
         <>
             {robots.map((robot, i) => {
